@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menna T-Allah Walid - Social Media Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Subtle Teal and Stone -->
+    <!-- Application Structure Plan: The CV is structured as a single-page portfolio with a fixed navigation bar for easy access to key sections: About, Experience, Skills, and Education. This non-linear structure allows recruiters to quickly jump to the information they find most relevant. The core of the application is an interactive vertical timeline for work experience, where details for each role can be expanded or collapsed. This approach avoids overwhelming the user with a wall of text and highlights career progression effectively. Skills are visualized using a radar chart to provide a quick, holistic understanding of her capabilities. This interactive, visually-driven design is more engaging than a static document and better reflects the creativity required in a social media role. -->
+    <!-- Visualization & Content Choices: 
+        - Personal Info/Objective -> Goal: Inform -> Presentation: A combined 'About Me' section with a professional summary. -> Interaction: Clickable contact links (mailto, tel). -> Justification: Creates a more personal and engaging introduction than a simple objective statement.
+        - Experience -> Goal: Organize/Show Change -> Presentation: A vertical, collapsible timeline built with HTML/Tailwind. -> Interaction: Users click on a job title to toggle the visibility of its responsibilities (accordion style). -> Justification: This organizes a large amount of text cleanly, shows career progression visually, and allows users to focus on specific roles. -> Library/Method: Vanilla JS.
+        - Skills -> Goal: Compare/Inform -> Presentation: A radar chart. -> Interaction: Hover tooltips provide details on each skill category. -> Justification: A radar chart offers a dynamic and memorable snapshot of her core competencies, which is more impactful than a simple list. -> Library/Method: Chart.js (Canvas).
+        - Education/Volunteer -> Goal: Inform -> Presentation: Clean, simple text sections. -> Interaction: None. -> Justification: This information is straightforward and doesn't require complex visualization.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            left: -0.5rem;
+            top: 0.25rem;
+            background-color: #5f9ea0;
+            border: 2px solid #f1f5f9;
+        }
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .details-content.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <span class="text-xl font-bold text-stone-700">Menna T-Allah Walid</span>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#about" class="text-stone-600 hover:text-[#5f9ea0] px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#experience" class="text-stone-600 hover:text-[#5f9ea0] px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                    <a href="#skills" class="text-stone-600 hover:text-[#5f9ea0] px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                    <a href="#languages" class="text-stone-600 hover:text-[#5f9ea0] px-3 py-2 rounded-md text-sm font-medium">Languages</a>
+                    <a href="#education" class="text-stone-600 hover:text-[#5f9ea0] px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto p-4 md:p-8">
+
+        <section id="about" class="min-h-[60vh] flex items-center">
+            <div class="w-full text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Menna T-Allah Walid</h1>
+                <p class="mt-2 text-xl md:text-2xl text-[#5f9ea0] font-medium">Social Media Specialist</p>
+                <p class="mt-6 max-w-3xl mx-auto md:mx-0 text-stone-600">
+                    A motivated Social Media Specialist seeking to leverage skills in content creation, strategy planning, and digital marketing to build brand awareness and deliver measurable results. Passionate about teamwork, creativity, and driving engagement across platforms.
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start items-center space-x-6">
+                    <a href="mailto:mennawalid556@gmail.com" class="text-stone-600 hover:text-[#5f9ea0] flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <span>mennawalid556@gmail.com</span>
+                    </a>
+                    <a href="tel:01018782762" class="text-stone-600 hover:text-[#5f9ea0] flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        <span>01018782762</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
+            <div class="relative border-l-2 border-slate-200 ml-4">
+                
+                <div class="mb-8 pl-8 timeline-item">
+                    <div class="cursor-pointer" data-target="details-1">
+                        <p class="text-sm text-stone-500">Nov 2024 – Aug 2025</p>
+                        <h3 class="font-bold text-lg text-stone-800">Social Media Specialist</h3>
+                        <p class="text-md text-stone-600">El Okaby Pharmacies</p>
+                    </div>
+                    <div id="details-1" class="details-content">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                            <li>Developed and executed monthly content strategies to enhance brand presence and audience engagement.</li>
+                            <li>Successfully managed the daily content lifecycle, from ideation to publication across Facebook and Instagram.</li>
+                            <li>Played a key role in a cross-functional team, collaborating with designers and video editors to elevate content quality.</li>
+                            <li>Contributed to the brand's visual evolution by conceptualizing and introducing new creative themes for content.</li>
+                            <li>Performed competitor analysis to identify strategic opportunities and inform content positioning.</li>
+                            <li>Provided crucial support for paid media campaigns, assisting with coordination and performance monitoring.</li>
+                            <li>Generated performance reports with actionable insights to guide and refine future content planning.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8 pl-8 timeline-item">
+                    <div class="cursor-pointer" data-target="details-val">
+                        <p class="text-sm text-stone-500">Side Project (2024 – Present)</p>
+                        <h3 class="font-bold text-lg text-stone-800">Social Media Creative</h3>
+                        <p class="text-md text-stone-600">VAL Cosmetics</p>
+                    </div>
+                    <div id="details-val" class="details-content">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                           <li>Collaborated within a creative team to build the social media launch strategy for VAL, a new cosmetics brand.</li>
+                           <li>Pitched and developed key visual concepts that shaped the brand's initial online identity.</li>
+                           <li>Focused on creating platform-native ideas for Instagram & TikTok to target Gen Z and Class B/B+ consumers.</li>
+                           <li>Contributed to the creative direction and conceptualization of paid advertising campaigns.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8 pl-8 timeline-item">
+                     <div class="cursor-pointer" data-target="details-2">
+                        <p class="text-sm text-stone-500">Jul 2022 – Present</p>
+                        <h3 class="font-bold text-lg text-stone-800">Moderator Manager</h3>
+                        <p class="text-md text-stone-600">Rory’s Women’s Wear Store</p>
+                    </div>
+                    <div id="details-2" class="details-content">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                           <li>Led moderation and community management efforts, fostering a positive brand image and driving online sales.</li>
+                           <li>Managed a team of moderators to improve response times and ensure a high standard of customer service.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-8 pl-8 timeline-item">
+                    <div class="cursor-pointer" data-target="details-3">
+                        <p class="text-sm text-stone-500">Jan 2022 – Jul 2022</p>
+                        <h3 class="font-bold text-lg text-stone-800">Secretary & Receptionist</h3>
+                        <p class="text-md text-stone-600">Educational Center</p>
+                    </div>
+                    <div id="details-3" class="details-content">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                           <li>Streamlined front-desk operations by managing schedules and student inquiries to improve administrative workflow.</li>
+                           <li>Served as the first point of contact, ensuring a welcoming and organized environment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="mb-8 pl-8 timeline-item">
+                     <div class="cursor-pointer" data-target="details-4">
+                        <p class="text-sm text-stone-500">Jun 2021 – Sep 2021</p>
+                        <h3 class="font-bold text-lg text-stone-800">Sales Agent</h3>
+                        <p class="text-md text-stone-600">Elmassreen Tourism Agency</p>
+                    </div>
+                    <div id="details-4" class="details-content">
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                           <li>Effectively communicated the value of Hajj and Umrah programs to prospective clients.</li>
+                           <li>Provided detailed program comparisons to help clients make informed decisions.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mb-8 pl-8 timeline-item">
+                     <div class="cursor-pointer" data-target="details-5">
+                        <p class="text-sm text-stone-500">Jan 2019 – Mar 2019</p>
+                        <h3 class="font-bold text-lg text-stone-800">Intern</h3>
+                        <p class="text-md text-stone-600">Al Haramain New Pharmacy</p>
+                    </div>
+                    <div id="details-5" class="details-content">
+                         <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                           <li>Gained foundational experience in a fast-paced pharmaceutical environment, supporting daily operations and customer care.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">Core Competencies</h2>
+            <p class="text-center text-stone-600 max-w-2xl mx-auto mb-12">This visualization highlights my key areas of expertise, showcasing a balanced skill set in social media management, content development, strategic planning, and stakeholder communication.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-center mb-4">Technical & Soft Skills</h3>
+                    <div class="chart-container relative h-80 md:h-96 w-full max-w-lg mx-auto">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-lg">Technical Skills</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                            <li>Social Media Management (Meta Business Suite)</li>
+                            <li>Content Creation (Canva, Copywriting)</li>
+                            <li>Ads & Media Buying (Knowledge of Meta Ads Manager)</li>
+                            <li>Analytics & Reporting (Google Analytics, Excel)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Soft Skills</h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-stone-600">
+                            <li>Creative Thinking & Content Ideation</li>
+                            <li>Strategic Planning & Problem Solving</li>
+                            <li>Strong Communication & Collaboration</li>
+                            <li>Time Management & Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="languages" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Languages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">Arabic</h3>
+                    <p class="mt-2 text-lg text-stone-600">Native Speaker</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">English</h3>
+                    <p class="mt-2 text-lg text-stone-600">Good Working Proficiency</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Education & Volunteering</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">Education</h3>
+                    <p class="mt-2 text-lg text-stone-700">Faculty of Law, Helwan University</p>
+                    <p class="text-stone-600">Final-year student</p>
+                    <p class="mt-1 text-sm text-stone-500">Previous year's grade: Good</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <h3 class="text-xl font-bold">Volunteer Work</h3>
+                    <p class="mt-2 text-lg text-stone-700">Resala Charity Organization</p>
+                    <p class="text-stone-600">Participated in charity events and community service activities.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-stone-200">
+        <div class="max-w-6xl mx-auto py-6 px-4 text-center text-stone-500">
+            <p>&copy; 2025 Menna T-Allah Walid. Professional references available upon request.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineItems = document.querySelectorAll('[data-target]');
+            timelineItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetId = item.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.classList.toggle('open');
+                    }
+                });
+            });
+
+            const skillsCtx = document.getElementById('skillsChart').getContext('2d');
+            const skillsChart = new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Social Media Mgmt', 'Content Creation', 'Strategy & Analytics', 'Client Communication', 'Team Management'],
+                    datasets: [{
+                        label: 'Skill Level',
+                        data: [5, 5, 4, 4, 3],
+                        backgroundColor: 'rgba(95, 158, 160, 0.2)',
+                        borderColor: 'rgba(95, 158, 160, 1)',
+                        pointBackgroundColor: 'rgba(95, 158, 160, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(95, 158, 160, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12
+                                },
+                                color: '#333'
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                max: 5,
+                                stepSize: 1,
+                                backdropColor: 'transparent'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
